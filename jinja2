@@ -1,0 +1,5 @@
+lookup hostname: {{ lookup('dig', 'google.ca.') }}
+
+## in a variable
+{% set fqdn = 'google.ca' %}
+lookup hostname: {{ lookup('dig', fqdn) }}
