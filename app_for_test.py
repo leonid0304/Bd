@@ -6,12 +6,12 @@ from pymongo import MongoClient
 
 client = MongoClient()
 db = client['info']
-collection = db.users
+collection = db.test1
 
 app = Flask(__name__)
 
 
-html = open('b.html').read()
+html = open('c.html').read()
 # mongo1= open("Bd/users.js").read()
 
 template = Template(html)
@@ -19,15 +19,14 @@ prob="\n"
 @app.route("/")
 def ip():
 
-    head=str(request.headers)
-    mas=head.split(' ')
+    post_str = []
+    for post in collection.find().limit(50):
+        post_str.append(str(post))
 
     # return (template.render(name=str(request.remote_addr),name1=mas))
     # return (template.render(name=str(request.remote_addr)))
-    return (template.render(name=str(collection.find_one())))
-
-
+    return (template.render(name=post_str))
 
 if __name__ == "__main__":
 # app.run()
-    app.run(host='0.0.0.0', port=1456)
+    app.run(host='0.0.0.0', port=1355)

@@ -11,7 +11,7 @@ collection = db.users
 app = Flask(__name__)
 
 
-html = open('b.html').read()
+html = open('c.html').read()
 # mongo1= open("Bd/users.js").read()
 
 template = Template(html)
@@ -19,15 +19,15 @@ prob="\n"
 @app.route("/")
 def ip():
 
-    head=str(request.headers)
-    mas=head.split(' ')
 
-    # return (template.render(name=str(request.remote_addr),name1=mas))
-    # return (template.render(name=str(request.remote_addr)))
-    return (template.render(name=str(collection.find_one())))
+    colection_str = []
+    mas_collection_names = db.collection_names()
+    for i in range(len(mas_collection_names)):
 
+        colection_str.append(str(mas_collection_names[i]))
 
+    return (template.render(name=colection_str))
 
 if __name__ == "__main__":
-# app.run()
-    app.run(host='0.0.0.0', port=1456)
+# app.run()nn
+    app.run(host='0.0.0.0', port=1478 ,debug=True)

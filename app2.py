@@ -11,7 +11,10 @@ template = Template(html)
 @app.route("/")
 def ip():
 
+
     head=str(request.headers)
+
+    print type(request.headers)
     mas=head.split(' ')
 
     # return (template.render(name=str(request.remote_addr),name1=mas))
@@ -21,4 +24,4 @@ def ip():
 
 if __name__ == "__main__":
 # app.run()
-    app.run(host='0.0.0.0', port=1456)
+    app.run(host='0.0.0.0', port=1455)

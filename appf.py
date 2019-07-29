@@ -8,26 +8,26 @@ client = MongoClient()
 db = client['info']
 collection = db.users
 
-app = Flask(__name__)
+app1= Flask(__name__)
 
 
-html = open('b.html').read()
+html = open('c.html').read()
 # mongo1= open("Bd/users.js").read()
 
 template = Template(html)
 prob="\n"
-@app.route("/")
+@app1.route("/")
 def ip():
 
-    head=str(request.headers)
-    mas=head.split(' ')
+    post_str = []
+    # for post in collection.find({"age": {"$lt": 30}}).sort("name"):
+    for post in collection.find():
+        post_str.append(str(post))
 
     # return (template.render(name=str(request.remote_addr),name1=mas))
     # return (template.render(name=str(request.remote_addr)))
-    return (template.render(name=str(collection.find_one())))
-
-
+    return (template.render(name=post_str))
 
 if __name__ == "__main__":
 # app.run()
-    app.run(host='0.0.0.0', port=1456)
+    app1.run(host='0.0.0.0', port=1454)

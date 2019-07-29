@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+        {{ name1 }}
+        {% set ab="a" %}
+        {% for i in name%}
+         <li> {{ i }}</li>
+        {% set ab=i %}
+        {{ab}}
+
+
+        <script>
+        var b = document.createElement('b');
+        var linkText = document.createTextNode("text"});
+        b.appendChild(linkText);
+        b.title = "my title text";
+        b.href = "http://vk.com";
+        document.body.appendChild(b);
+        </script>
+
+
+
+        {% endfor %}
+        <script>
+        var a = document.createElement('a');
+        var linkText = document.createTextNode( {{ name1 }} );
+        a.appendChild(linkText);
+        a.title = "my title text";
+        a.href = "http://vk.com";
+        document.body.appendChild(a);
+        </script>
+        <script>
+        var a = document.createElement('a');
+        var linkText = document.createTextNode( "text1"  );
+        a.appendChild(linkText);
+        a.title = "my title text";
+<!--        a.href = "http://vk.com";-->
+        a.href = "http://0.0.0.0:1455/";
+        document.body.appendChild(a);
+        </script>
+        <script>
+        var c = document.createElement('c');
+        var linkText = document.createTextNode("users"});
+        c.appendChild(linkText);
+        c.title = "my title text ";
+        c.href = " http://0.0.0.0:1455/";
+        document.body.appendChild(c);
+        </script>
+
+</body>
+</html>

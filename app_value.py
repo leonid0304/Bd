@@ -1,0 +1,37 @@
+import httplib
+from jinja2 import Template
+from flask import Flask
+from flask import request
+from pymongo import MongoClient
+
+client = MongoClient()
+db = client['info']
+collection = db.users
+
+app = Flask(__name__)
+
+
+html = open('c.html').read()
+# mongo1= open("Bd/users.js").read()
+
+template = Template(html)
+prob="\n"
+@app.route("/")
+def ip():
+
+    post_str = []
+    for post in collection.find():
+        post_name=post['name']
+        post_age=post['age']
+        # post_str.append('name : '+ str(post_name)+'  age : '+str(post_age))
+        # post_str.append('name : %8s age: %s ' %(str(post_name),str(post_age)) )
+
+        post_str.append('name : {0:<6} age : {1:0<5}'.format(str(post_name), str(post_age)))
+
+    # return (template.render(name=str(request.remote_addr),name1=mas))
+    # return (template.render(name=str(request.remote_addr)))
+    return (template.render(name=post_str))
+
+if __name__ == "__main__":
+# app.run()nn
+    app.run(host='0.0.0.0', port=1462, debug=True)
